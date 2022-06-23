@@ -1,0 +1,23 @@
+{
+  "name": "sfdx-delta-package",
+  "version": "1.0.0",
+  "description": "Generate delta package.xml",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "sfdx-delta-package": "./src/index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bugs": "https://github.com/Gaurav-Trivedi/sfdx-delta-package/issues",
+  "homepage": "https://github.com/Gaurav-Trivedi/sfdx-delta-package",
+  "repository": "Gaurav-Trivedi/sfdx-delta-package",
+  "keywords": ["package.xml", "delta-package", "delta", "Salesforce", "sfdx", "Generate package", "package builder", "CICD"],
+  "author": "gauravtrivedi",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^9.3.0",
+    "npm": "^8.12.2"
+  }
+}
