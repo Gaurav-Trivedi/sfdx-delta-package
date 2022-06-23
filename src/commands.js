@@ -5,7 +5,7 @@ const program = new Command();
 program
 	.name('sfdx-delta-package')
 	.description('Create delta package.xml from between two branches of Github')
-	.version('1.0.0')
+	.version('1.0.1')
 	.usage('-sb develop -tb master')
 	.option('-u, --user-name <value>', 'salesforce instance user name or alias, if already defined, the Salesforce instance')
 	.option('-f, --file <type>', 'Delta file path')
@@ -13,6 +13,7 @@ program
 	.option('-tb, --target-branch <type>', 'Target Branch of Git')
 	.option('-pv, --package-version <type>', 'Package.xml version', '55.0')
 	.option('-o, --output-path <type>', 'Output path', 'manifest/package.xml')
+	.option('-l, --local-git', 'Check changes in local git')
 	.option('-d, --display-output', 'Display package.xml as an console output');
 
 program.on('--help', function () {
@@ -31,6 +32,9 @@ program.on('--help', function () {
   
   Generate package.xml from source and target branch of GitHub with package.xml version as 53.0:
     $ sfdx-delta-package -sb source_branch -tb target_branch -pv 53.0
+
+  Generate package.xml from local source and target branch of Git branches:
+    $ sfdx-delta-package -sb source_branch -tb target_branch -l
 
   Generate package.xml from delta file and store in different directory or folder:
     $ sfdx-delta-package -f file_path.txt -o main/profiles.xml

@@ -36,6 +36,9 @@ sfdx-package-builder -sb develop -tb master
   
   Generate package.xml from source and target branch of GitHub with package.xml version as 53.0:
     $ sfdx-package-builder -sb source_branch -tb target_branch -pv 53.0
+  
+  Generate package.xml from local source and target branch of Git branches:
+    $ sfdx-delta-package -sb source_branch -tb target_branch -l
 
   Generate package.xml from delta file and store in different directory or folder:
     $ sfdx-package-builder -f file_path.txt -o main/profiles.xml

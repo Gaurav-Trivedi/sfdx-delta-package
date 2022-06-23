@@ -153,6 +153,8 @@ function initiateProcess() {
 	if (!contents) {
 		console.log("We didn't find any changes.");
 		process.exit();
+	} else {
+		contents = contents.replace(/\\/g,"/");
 	}
 	filterMetadataEntries();
 }

@@ -30,10 +30,12 @@ function os_func() {
  */
 function checkDelta() {
 	if (!options.file && options.sourceBranch && options.targetBranch) {
-		const mergeIdCommand = `git merge-base origin/${options.sourceBranch} origin/${options.targetBranch}`;
+		options.sourceBranch = options.localGit ? options.sourceBranch : `origin/${options.sourceBranch}`;
+		options.targetBranch = options.localGit ? options.targetBranch : `origin/${options.targetBranch}`;
+		const mergeIdCommand = `git merge-base ${options.sourceBranch} ${options.targetBranch}`;
 		os.execCommand(mergeIdCommand, function (mergeId) {
 			mergeId = mergeId.replace('\n', '').trim();
-			const diffCommand = `git diff --name-only --diff-filter=ACMRTUXB ${mergeId} origin/${options.sourceBranch}`;
+			const diffCommand = `git diff --name-only --diff-filter=ACMRTUXB ${mergeId} ${options.sourceBranch}`;
 			os.execCommand(diffCommand, function (gitDiffResponse) {
 				options.file = options.file ? options.file : `${process.cwd()}/diff-file-git.txt`;
 				options.deleteFile = true;

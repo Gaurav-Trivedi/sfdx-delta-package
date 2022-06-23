@@ -1,6 +1,6 @@
 {
   "name": "sfdx-delta-package",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate delta package.xml",
   "main": "index.js",
   "type": "module",
