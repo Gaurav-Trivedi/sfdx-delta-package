@@ -42,4 +42,4 @@ sfdx-package-builder -sb develop -tb master
 ```
 
 ### Note
-We can update the metadata coverage using [metadata.js](sfdx-package-builder/src/metadata.js) file. For full support on Salesforce metadata use this [metadata coverage report](https://developer.salesforce.com/docs/metadata-coverage).
+We can update the metadata coverage using [metadata.js](src/metadata.js) file. For full support on Salesforce metadata use this [metadata coverage report](https://developer.salesforce.com/docs/metadata-coverage).
