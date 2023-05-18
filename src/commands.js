@@ -11,7 +11,7 @@ program
 	.option('-f, --file <type>', 'Delta file path')
 	.option('-sb, --source-branch <type>', 'Source Branch of Git')
 	.option('-tb, --target-branch <type>', 'Target Branch of Git')
-	.option('-pv, --package-version <type>', 'Package.xml version', '55.0')
+	.option('-pv, --package-version <type>', 'Package.xml version', '57.0')
 	.option('-o, --output-path <type>', 'Output path', 'manifest/package.xml')
 	.option('-l, --local-git', 'Check changes in local git')
 	.option('-d, --display-output', 'Display package.xml as an console output');
@@ -30,8 +30,8 @@ program.on('--help', function () {
   Generate package.xml from source and target branch of GitHub:
     $ sfdx-delta-package -sb source_branch -tb target_branch
   
-  Generate package.xml from source and target branch of GitHub with package.xml version as 53.0:
-    $ sfdx-delta-package -sb source_branch -tb target_branch -pv 53.0
+  Generate package.xml from source and target branch of GitHub with package.xml version as 57.0:
+    $ sfdx-delta-package -sb source_branch -tb target_branch -pv 57.0
 
   Generate package.xml from local source and target branch of Git branches:
     $ sfdx-delta-package -sb source_branch -tb target_branch -l
