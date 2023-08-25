@@ -151,7 +151,7 @@ function initiateProcess() {
 		fs.unlinkSync(options.file);
 	}
 	if (!contents) {
-		console.log("We didn't find any changes.");
+		console.log("No change found.");
 		process.exit();
 	} else {
 		contents = contents.replace(/\\/g,"/");
