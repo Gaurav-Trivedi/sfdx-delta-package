@@ -5,7 +5,7 @@ const program = new Command();
 program
 	.name('sfdx-delta-package')
 	.description('Create delta package.xml from between two branches of Github')
-	.version('1.0.1')
+	.version('1.0.2')
 	.usage('-sb develop -tb master')
 	.option('-u, --user-name <value>', 'salesforce instance user name or alias, if already defined, the Salesforce instance')
 	.option('-f, --file <type>', 'Delta file path')
