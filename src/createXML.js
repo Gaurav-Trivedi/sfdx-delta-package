@@ -16,20 +16,22 @@ let componentMap = new Object();
  */
 function buildPackageXml(fContantMap) {
 	let xmlContent = '<?xml version="1.0" encoding="UTF-8"?>\n<Package xmlns="http://soap.sforce.com/2006/04/metadata">\n';
-	Object.keys(fContantMap).forEach((a) => {
-		xmlContent += '\t<types>\n';
-		fContantMap[a].forEach((x) => {
-			xmlContent += '\t\t<members>' + x + '</members>\n';
+	if(fContantMap){
+		Object.keys(fContantMap).forEach((a) => {
+			xmlContent += '\t<types>\n';
+			fContantMap[a].forEach((x) => {
+				xmlContent += '\t\t<members>' + x + '</members>\n';
+			});
+			xmlContent += '\t\t<name>' + a + '</name>\n';
+			xmlContent += '\t</types>\n';
 		});
-		xmlContent += '\t\t<name>' + a + '</name>\n';
-		xmlContent += '\t</types>\n';
-	});
+	}
 	xmlContent += `\t<version>${options.packageVersion}</version>\n`;
 	xmlContent += '</Package>';
 	if (options.displayOutput) {
 		console.log(xmlContent);
 	}
-	createFile(xmlContent);
+	createFile(xmlContent, fContantMap === undefined);
 }
 
 /**
@@ -38,10 +40,10 @@ function buildPackageXml(fContantMap) {
  * @date 01-23-2022
  * @param {*} xml data for xml file creation
  */
-function createFile(xml) {
+function createFile(xml, destructiveChange) {
 	let filePath;
 	const outputPath = options.outputPath;
-	const fileName = outputPath.lastIndexOf('.xml') > -1 ? outputPath.substring(outputPath.lastIndexOf('/') + 1) : 'package.xml';
+	const fileName = !destructiveChange ? outputPath.lastIndexOf('.xml') > -1 ? outputPath.substring(outputPath.lastIndexOf('/') + 1) : 'package.xml' : 'package.xml';
 	const dir = outputPath.substring(0, outputPath.lastIndexOf('/'));
 	if (dir) {
 		filePath = dir.split('/').reduce(
@@ -151,10 +153,13 @@ function initiateProcess() {
 		fs.unlinkSync(options.file);
 	}
 	if (!contents) {
-		console.log("No change found.");
+		console.log("We didn't find any changes.");
 		process.exit();
 	} else {
 		contents = contents.replace(/\\/g,"/");
+	}
+	if(options.destructiveChanges){
+		buildPackageXml();
 	}
 	filterMetadataEntries();
 }

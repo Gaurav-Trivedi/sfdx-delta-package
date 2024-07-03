@@ -35,7 +35,7 @@ function checkDelta() {
 		const mergeIdCommand = `git merge-base ${options.sourceBranch} ${options.targetBranch}`;
 		os.execCommand(mergeIdCommand, function (mergeId) {
 			mergeId = mergeId.replace('\n', '').trim();
-			const diffCommand = `git diff --name-only --diff-filter=ACMRTUXB ${mergeId} ${options.sourceBranch}`;
+			const diffCommand = options.destructiveChanges ? `git diff --name-only --diff-filter=D ${mergeId} ${options.sourceBranch}` : `git diff --name-only --diff-filter=ACMRTUXB ${mergeId} ${options.sourceBranch}`;
 			os.execCommand(diffCommand, function (gitDiffResponse) {
 				options.file = options.file ? options.file : `${process.cwd()}/diff-file-git.txt`;
 				options.deleteFile = true;
