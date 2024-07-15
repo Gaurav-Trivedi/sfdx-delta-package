@@ -120,7 +120,7 @@ function filterMetadataEntries() {
 						const dotElements = splitPath[1].split(".");
 						element = dotElements[0] + "." + dotElements[1];
 						create = true;
-					} else if (!entry[1].objectRelated && row.includes(".")) {
+					} else if (!entry[1].objectRelated && row.includes(".") && (splitPath[0] !== "objects" || (splitPath[0] !== "objects" && splitPath.length < 4))) {
 						element = splitPath[1].split(".")[0];
 						create = true;
 					}

@@ -5,7 +5,7 @@ const program = new Command();
 program
 	.name('sfdx-delta-package')
 	.description('Create delta package.xml from between two branches of Github')
-	.version('2.0.0')
+	.version('2.1.0')
 	.usage('-sb develop -tb master')
 	.option('-f, --file <type>', 'Delta file path')
 	.option('-sb, --source-branch <type>', 'Source Branch of Git')
